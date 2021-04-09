@@ -1,0 +1,113 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.header {
+  background: white;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background: #da291c;
+}
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.content-global {
+  width: 100%;
+}
+
+.font-primary-aforo {
+  color: var(--unnamed-color-ffffff);
+  text-align: left;
+  font: normal normal bold 95px/126px Roboto;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.font-secundary {
+  justify-items: center;
+  align-content: center;
+  font: normal normal bold 25px/33px Roboto;
+  letter-spacing: 0px;
+  color: #85fffd;
+  opacity: 1 !important;
+}
+
+.font-white {
+  color: var(--unnamed-color-ffffff);
+  text-align: center;
+  font: normal normal bold 70px/92px Roboto;
+  letter-spacing: 0px;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.font-white-min {
+  text-align: center;
+  font: 26px Roboto !important;
+  letter-spacing: 0px;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+
+.background-primary {
+  background: #fc5347;
+  border-radius: 12px;
+}
+
+.background {
+  background: #da291c;
+}
+
+.media-xlg {
+  position: relative;
+  top: -54vh;
+}
+
+.col-np {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1229px) {
+  .media-xlg {
+    position: relative;
+    top: -54vh;
+  }
+}
+
+@media (max-width: 1150px) {
+  .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1250px) {
+  .media-xlg {
+    position: relative;
+    top: -44vh;
+  }
+}
+
+#chart {
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+}
