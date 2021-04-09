@@ -85,7 +85,7 @@ function GeneratedChart() {
         dataLabels: {
           name: {
             show: true,
-            fontSize: "30px",
+            fontSize: "27px",
             color: "#ffffff",
             offsetY: -10,
             fontWeight: "bold",
