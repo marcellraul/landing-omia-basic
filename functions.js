@@ -1,7 +1,7 @@
-const urlService = "https://www.omia.ai/ServiciosOmiaV2";
-let interval;
-let intervalFecha;
-let promedio = 0;
+var urlService = "https://www.omia.ai/ServiciosOmiaV2";
+var interval;
+var intervalFecha;
+var promedio = 0;
 
 $(document).ready(function () {
   console.log("ready!");
@@ -24,22 +24,21 @@ function GetDate() {
 }
 
 function main() {
-  GeneratedChart();
+  //GeneratedChart();
   Services();
-  interval = setInterval(() => {
+  interval = setInterval( function() {
     Services();
   }, 60000);
 
-  intervalFecha = setInterval(() => {
+  intervalFecha = setInterval(function() {
     GetDate();
   }, 1000);
 }
 
 function Services() {
-  $.get(
-    `${urlService}/ApiAnalytic/GetDataResumenocupacionActual/?rol_id=140031&country_id=${null}&location_id=${null}&camera_id=44&instance=${null}&clase=${null}&analytic_id=${null}`,
+  $.get(urlService+'/ApiAnalytic/GetDataResumenocupacionActual/?rol_id=140031&country_id=null&location_id=null&camera_id=44&instance=null&clase=null&analytic_id=null',
     function (response) {
-      //console.log(response);
+      console.log(response);
       promedio = Math.round(response.data[0].prom * 100);
       $("div#maximo").text(response.data[0].capacidad);
       $("div#minimo").text(response.data[0].disponible);
@@ -58,8 +57,8 @@ function GeneratedChart() {
     chart: {
       type: "radialBar",
       width: "900px",
-      offsetY: -120,
-      offsetX: -120,
+      offsetY: -90,
+      //offsetX: -120,
       sparkline: {
         enabled: true,
       },
@@ -109,6 +108,7 @@ function GeneratedChart() {
     fill: {},
     labels: ["Porcentaje de ocupación"],
   };
+  $("#chart").empty();
   var chart = new ApexCharts(document.querySelector("#chart"), options);
   chart.render();
 }
