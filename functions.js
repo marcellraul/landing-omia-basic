@@ -24,7 +24,6 @@ function GetDate() {
 }
 
 function main() {
-  GeneratedChart();
   Services();
   interval = setInterval(() => {
     Services();
@@ -57,9 +56,9 @@ function GeneratedChart() {
     series: [promedio],
     chart: {
       type: "radialBar",
-      width: "900px",
-      offsetY: -120,
-      offsetX: -120,
+      width: "800px",
+      offsetY: -90,
+      offsetX: -20,
       sparkline: {
         enabled: true,
       },
@@ -86,7 +85,7 @@ function GeneratedChart() {
         dataLabels: {
           name: {
             show: true,
-            fontSize: "30px",
+            fontSize: "27px",
             color: "#ffffff",
             offsetY: -10,
             fontWeight: "bold",
@@ -109,6 +108,7 @@ function GeneratedChart() {
     fill: {},
     labels: ["Porcentaje de ocupación"],
   };
+  $("#chart").empty();
   var chart = new ApexCharts(document.querySelector("#chart"), options);
   chart.render();
 }
