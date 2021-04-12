@@ -20,7 +20,6 @@ function Hash() {
   var valores = window.location.search;
   var urlParams = new URLSearchParams(valores);
   var hash = urlParams.get("hash");
-  console.log("prueba");
   console.log("hash:", hash);
   if (
     hash &&
@@ -32,7 +31,6 @@ function Hash() {
   }
 }
 $(document).ready(function () {
-  console.log("ready!");
   main();
 });
 
@@ -44,14 +42,26 @@ $(window).on("unload", function () {
 function GetDate() {
   var hoy = new Date();
   var cero;
+  var ceromin;
+
   if (hoy.getSeconds() < 10) {
     cero = 0;
   } else cero = "";
 
+  if (hoy.getMinutes() < 10) {
+    ceromin = 0;
+  } else ceromin = "";
+
   var fecha =
     hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
   var hora =
-    hoy.getHours() + ":" + hoy.getMinutes() + ":" + cero + hoy.getSeconds();
+    hoy.getHours() +
+    ":" +
+    ceromin +
+    hoy.getMinutes() +
+    ":" +
+    cero +
+    hoy.getSeconds();
   $("p#hora").text(hora);
   $("p#fecha").text(fecha);
 }
