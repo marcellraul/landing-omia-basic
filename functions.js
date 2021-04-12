@@ -16,10 +16,26 @@ function ValidHash() {
   }
 }
 
+var getUrlParameter = function getUrlParameter(sParam) {
+  var sPageURL = window.location.search.substring(1),
+      sURLVariables = sPageURL.split('&'),
+      sParameterName,
+      i;
+
+  for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+
+      if (sParameterName[0] === sParam) {
+          return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+      }
+  }
+  return false;
+};
+
 function Hash() {
-  var valores = window.location.search;
-  var urlParams = new URLSearchParams(valores);
-  var hash = urlParams.get("hash");
+  //var valores = window.location.search;
+  //var urlParams = new URLSearchParams(valores);
+  var hash = getUrlParameter("hash") // urlParams.get("hash");
   console.log("hash:", hash);
   if (
     hash &&
@@ -29,7 +45,10 @@ function Hash() {
   } else {
     isValid = true;
   }
+
+  ValidHash();
 }
+
 $(document).ready(function () {
   main();
 });
@@ -69,7 +88,7 @@ function GetDate() {
 function main() {
   //GeneratedChart();
   Hash();
-  ValidHash();
+  //ValidHash();
   Services();
   interval = setInterval(function () {
     Services();
