@@ -4,24 +4,33 @@ var intervalFecha;
 var promedio = 0;
 
 var hash;
-var isValid = false;
+var isValid;
 
-// function Hash() {
-//   var valores = window.location.search;
-//   var urlParams = new URLSearchParams(valores);
-//   var urlvalid = urlParams.get("hash");
-//   console.log("prueba");
-//   console.log("hash:", urlvalid);
-//   if (
-//     hash &&
-//     hash === "0cda1f2904dc14e34ec69f5b23e36a0eb0fc222785ba496c41dba4a38bd9f9a5"
-//   ) {
-//     isValid = true;
-//   } else {
-//     isValid = false;
-//   }
-// }
+function ValidHash() {
+  if (isValid) {
+    $("#content").hide();
+    $("#UrlInvalid").show();
+  } else if (!isValid) {
+    $("#UrlInvalid").hide();
+    $("#content").show();
+  }
+}
 
+function Hash() {
+  var valores = window.location.search;
+  var urlParams = new URLSearchParams(valores);
+  var hash = urlParams.get("hash");
+  console.log("prueba");
+  console.log("hash:", hash);
+  if (
+    hash &&
+    hash == "0cda1f2904dc14e34ec69f5b23e36a0eb0fc222785ba496c41dba4a38bd9f9a5"
+  ) {
+    isValid = false;
+  } else {
+    isValid = true;
+  }
+}
 $(document).ready(function () {
   console.log("ready!");
   main();
@@ -34,26 +43,22 @@ $(window).on("unload", function () {
 
 function GetDate() {
   var hoy = new Date();
+  var cero;
+  if (hoy.getSeconds() < 10) {
+    cero = 0;
+  } else cero = "";
+
   var fecha =
     hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
-  var hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
-
+  var hora =
+    hoy.getHours() + ":" + hoy.getMinutes() + ":" + cero + hoy.getSeconds();
   $("p#hora").text(hora);
   $("p#fecha").text(fecha);
 }
 
-function ValidHash() {
-  if (isValid) {
-    $("#content").hide();
-    $("#UrlInvalid").show();
-  } else if (!isValid) {
-    $("#UrlInvalid").hide();
-    $("#content").show();
-  }
-}
 function main() {
   //GeneratedChart();
-  //Hash();
+  Hash();
   ValidHash();
   Services();
   interval = setInterval(function () {
