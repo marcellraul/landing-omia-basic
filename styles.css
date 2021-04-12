@@ -83,6 +83,9 @@ body {
   padding-left: 10px !important;
 }
 
+.vh-70 {
+  height: 70vh !important;
+}
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 1229px) {
   .media-xlg {

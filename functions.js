@@ -3,6 +3,25 @@ var interval;
 var intervalFecha;
 var promedio = 0;
 
+var hash;
+var isValid = false;
+
+// function Hash() {
+//   var valores = window.location.search;
+//   var urlParams = new URLSearchParams(valores);
+//   var urlvalid = urlParams.get("hash");
+//   console.log("prueba");
+//   console.log("hash:", urlvalid);
+//   if (
+//     hash &&
+//     hash === "0cda1f2904dc14e34ec69f5b23e36a0eb0fc222785ba496c41dba4a38bd9f9a5"
+//   ) {
+//     isValid = true;
+//   } else {
+//     isValid = false;
+//   }
+// }
+
 $(document).ready(function () {
   console.log("ready!");
   main();
@@ -23,22 +42,35 @@ function GetDate() {
   $("p#fecha").text(fecha);
 }
 
+function ValidHash() {
+  if (isValid) {
+    $("#content").hide();
+    $("#UrlInvalid").show();
+  } else if (!isValid) {
+    $("#UrlInvalid").hide();
+    $("#content").show();
+  }
+}
 function main() {
   //GeneratedChart();
+  //Hash();
+  ValidHash();
   Services();
-  interval = setInterval( function() {
+  interval = setInterval(function () {
     Services();
   }, 60000);
 
-  intervalFecha = setInterval(function() {
+  intervalFecha = setInterval(function () {
     GetDate();
   }, 1000);
 }
 
 function Services() {
-  $.get(urlService+'/ApiAnalytic/GetDataResumenocupacionActual/?rol_id=140031&country_id=null&location_id=null&camera_id=44&instance=null&clase=null&analytic_id=null',
+  $.get(
+    urlService +
+      "/ApiAnalytic/GetDataResumenocupacionActual/?rol_id=140031&country_id=null&location_id=null&camera_id=44&instance=null&clase=null&analytic_id=null",
     function (response) {
-      console.log(response);
+      //console.log(response);
       promedio = Math.round(response.data[0].prom * 100);
       $("div#maximo").text(response.data[0].capacidad);
       $("div#minimo").text(response.data[0].disponible);
@@ -70,7 +102,7 @@ function GeneratedChart() {
         startAngle: -90,
         endAngle: 90,
         track: {
-          background: "#e7e7e7",
+          background: "#ffffff",
           strokeWidth: "97%",
           margin: 5, // margin is in pixels
           dropShadow: {
