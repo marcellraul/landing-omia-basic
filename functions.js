@@ -18,16 +18,17 @@ function ValidHash() {
 
 var getUrlParameter = function getUrlParameter(sParam) {
   var sPageURL = window.location.search.substring(1),
-      sURLVariables = sPageURL.split('&'),
-      sParameterName,
-      i;
+    sURLVariables = sPageURL.split("&"),
+    sParameterName,
+    i;
 
   for (i = 0; i < sURLVariables.length; i++) {
-      sParameterName = sURLVariables[i].split('=');
-
-      if (sParameterName[0] === sParam) {
-          return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-      }
+    sParameterName = sURLVariables[i].split("=");
+    if (sParameterName[0] === sParam) {
+      return typeof sParameterName[1] === undefined
+        ? true
+        : decodeURIComponent(sParameterName[1]);
+    }
   }
   return false;
 };
@@ -35,7 +36,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 function Hash() {
   //var valores = window.location.search;
   //var urlParams = new URLSearchParams(valores);
-  var hash = getUrlParameter("hash") // urlParams.get("hash");
+  var hash = getUrlParameter("hash"); // urlParams.get("hash");
   console.log("hash:", hash);
   if (
     hash &&
@@ -92,7 +93,7 @@ function main() {
   Services();
   interval = setInterval(function () {
     Services();
-  }, 60000);
+  }, 20000);
 
   intervalFecha = setInterval(function () {
     GetDate();
