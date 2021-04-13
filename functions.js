@@ -112,6 +112,7 @@ function Services() {
       $("div#aforo").text(
         Math.round(response.data[0].prom * response.data[0].capacidad)
       );
+      console.log("20 secons");
       GeneratedChart();
     },
     "json"
